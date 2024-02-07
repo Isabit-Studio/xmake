@@ -807,6 +807,7 @@ function os.execv(program, argv, opt)
                 -- we cannot run `/bin/sh` directly on windows
                 -- because `/bin/sh` is not real file path, maybe we need to convert it.
                 local host = os.host()
+                print("host", host)
                 if host == "windows" then
                     filename = "sh"
                     argv = table.join(shellfile, argv)
@@ -827,6 +828,8 @@ function os.execv(program, argv, opt)
         end
         file:close()
     end
+    print("filename", filename)
+    print(os.args(argv))
 
     -- uses the given environments?
     local envs = nil
