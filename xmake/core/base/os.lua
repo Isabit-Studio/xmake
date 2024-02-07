@@ -799,6 +799,9 @@ function os.execv(program, argv, opt)
     -- run shell file? parse `#!/usr/bin/env bash` in xx.sh
     --
     -- e.g. os.execv("./configure", {"--help"}) => os.execv("/usr/bin/env", {"bash", "./configure", "--help"})
+    print("shell", opt.shell)
+    print("isfile", filename, os.isfile(filename))
+    print("islink", filename, os.islink(filename))
     if opt.shell and os.isfile(filename) then
         local shellfile = filename
         local file = io.open(filename, 'r')
